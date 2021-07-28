@@ -2,7 +2,7 @@
 
 Final project for the Data Analytics bootcamp of Ironhack - WIP
 
-Notebooks guide:
+**Notebooks guide**:
 - 0_Iteration1: first attempt at building a model
 - 1_EDA_and_Preprocessing: EDA, preprocessing and tokenization of the training datasets and of the evaluation dataset. The evaluation dataset contains the comments from Kevin Spacey's last 3 instagram posts. I scraped them myself with Instaloader. 
 - 2_Training: I am using a pre-trained BERT model (bert-base-uncased). My intention was to fine-tune it with 8 datasets that include different types of bullying (aggression, attack, sexism, racism, etc), but I found that the model's performance was better if I fine-tuned it only with one dataset. So in the end, I only used the aggression dataset. All the data (raw data, clean data, tokenized data and the evaluation data) can be found on Google Drive (see below). 
