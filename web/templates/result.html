@@ -2,23 +2,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Results</title>
+
+    <!-- Bootstrap 4 Stuff https://v4-alpha.getbootstrap.com/  --> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- End Bootstrap 4 stuff -->
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/face-with-symbols-on-mouth_1f92c.png">
 </head>
 <body>
-
+<div class = "pt-5"></div>
     <header>
-        <h2 style="text-align: center;">Aggressiveness Score:</h2>
+        <h1 style="text-align: center;" class="display-4">Aggressiveness Score:</h1>
+        <p style="text-align: center;" class="display-2">{{ aggressiveness }} / 100</p>        
         
-    </div>
+        {% if aggressiveness == 1%}
+        <h5 style="text-align: center;">Here's the 😤 tweet:</h5>
+        {% else %}
+        <h5 style="text-align: center;">Here are the 😤 tweets:</h5>
+        {% endif %}
+
     </header>
-    <div class="results">
-
-
-        
-    <h2 style="text-align: center;">{{ prediction }}</h2>
-
+    <div class = "pt-3"></div>
+    <div class="container">
+      {% for tweet in tweets %}
+      <div class = "pt-2"></div>
+      <div class="list-group">
+         <a href="{{tweet.url}}" class="list-group-item list-group-item-action flex-column align-items-start" target="_blank" rel="noopener noreferrer">
+           <div class="d-flex w-100 justify-content-between">
+             <img src="{{tweet.headshot_url}}" class="align-self-center mr-3 rounded-circle">  
+             <p class="ml-10 w-75 mb-1">{{ tweet.tweet }}</p>
+             <small>{{ tweet.created_at }}</small>
+             
+           </div>
+         </a>
+      </div>
+      {% endfor %}
+      
     </div>
+    </div>
+<div class = "pt-4"></div>
+<div class="d-flex justify-content-center">
+    <button type="button" class="btn btn-primary" action="{{ url_for('home')}}">Try again</button>
+</div>
+<div class = "pb-4"></div>
 
 </body>
 </html>

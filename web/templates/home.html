@@ -1,34 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
-    <!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>Twitter Aggressiveness Analyzer</title>
+    <!-- Bootstrap 4 Stuff https://v4-alpha.getbootstrap.com/  --> 
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
+    <!-- End Bootstrap 4 stuff -->
+    <link rel="icon" href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/face-with-symbols-on-mouth_1f92c.png">
 </head>
 <body>
-
+<div class = "pt-5"></div>
     <header>
-        <h2 style="text-align: center;">Twitter User Aggressiveness Score</h2>
+        <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/285/face-with-symbols-on-mouth_1f92c.png" class="rounded mx-auto d-block" alt="Cursing emoji"></img>
+ 
+        <h1 style="text-align: center;" class="display-3">Twitter Aggressiveness Analyzer</h1>
         
     </div>
     </header>
 
-    <div class="ml-container">
-
         <form action="{{ url_for('predict')}}" method="POST" style="text-align: center;">
-        <p style="text-align: center;">Enter a user handle to analyze their last 100 tweets</p>
-        <!-- <input type="text" name="comment"/> -->
-        <textarea name="message" rows="4" cols="50"></textarea>
-        <br/>
+        <div class = "pt-4"></div>
+        <p style="text-align: center;" class="lead">Enter a user handle to analyze their last 100 tweets</p>
+        <textarea name="message" rows="1" cols="20" placeholder="Username" ></textarea>
+        <div class = "pt-3"></div>
 
-        <input type="submit" class="btn-info" value="Predict" style="text-align: center;">
+        <input type="submit" class="btn btn-primary mb-2" value="Analyze" style="text-align: center;">
         
     </form>
-        
-    </div>
 
-    
-    
 
 </body>
 </html>

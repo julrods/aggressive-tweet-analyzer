@@ -1,6 +1,6 @@
 
 from flask import Flask, render_template, url_for, request
-
+import pandas as pd
 import os
 import tensorflow as tf
 import numpy as np
@@ -49,8 +49,18 @@ def predict():
           screen_name=user, 
           include_rts=False, 
           tweet_mode = "extended").items(100)] 
-        tweet_list = [tweet['full_text'] for tweet in tweets]
-        tweets_clean = list(map(preprocess_sentence, tweet_list))
+        tweet_dict = [{'tweet': tweet.full_text,
+              'created_at': tweet.created_at, 
+              'username': user,
+              'headshot_url': tweet.user.profile_image_url,
+              'url': f'https://twitter.com/user/status/{tweet.id}'
+               } for tweet in tweepy.Cursor(api.user_timeline,
+                                            screen_name=user,
+                                            exclude_replies=True,
+                                            include_rts=False,
+                                            tweet_mode = "extended").items(100)]
+        tweet_text_list = [tweet['tweet'] for tweet in tweet_dict]
+        tweets_clean = list(map(preprocess_sentence, tweet_text_list))
         tweets_final = list(map(lambda x: x.split('http')[0] if 'http' in x else x, tweets_clean))
         input_ids = []
         attention_masks = []
@@ -70,13 +80,21 @@ def predict():
         attention_masks = np.array(attention_masks)
         preds = model.predict([input_ids, attention_masks], batch_size=32)
         pred_labels = [np.argmax(pred) for pred in preds[0]]
-        aggressiveness = int(sum(pred_labels))
+        for tweet, pred in zip(tweet_dict, pred_labels):
+            tweet['label'] = pred
+        aggressive_tweets = [tweet for tweet in tweet_dict if tweet['label'] == 1]
+        #aggressiveness = "Out of the last 100 tweets of this account, {} were aggressive".format(len(aggressive_tweets))
+        aggressiveness = len(aggressive_tweets)
 
-    return render_template('result.html', prediction = "Out of the last 100 tweets of this account, {} were aggressive".format(aggressiveness))
 
-
+#    return render_template('result.html', prediction = "Out of the last 100 tweets of this account, {} were aggressive".format(aggressiveness))
+    return render_template('result.html', aggressiveness = aggressiveness, tweets = aggressive_tweets)
 
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+    #for production:
+    #from waitress import serve
+    #serve(app, host="0.0.0.0", port=8080) #open http://localhost:8080/
 
