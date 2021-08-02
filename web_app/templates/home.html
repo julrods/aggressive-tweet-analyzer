@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Aggressive Tweet Analyzer</title>
+
+    <!-- Bootstrap --> 
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
+          integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+          crossorigin="anonymous">
+    <!-- End Bootstrap -->
+
+    <link rel="icon" href="/static/cursing_emoji.ico">
+
+    <script>
+        function myFunction() {
+            document.getElementById("loading_image").src="/static/loading.gif";
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div class = "pt-5"></div>
+
+    <header>
+        <img src="/static/cursing_emoji.png" class="rounded mx-auto d-block" alt="Cursing emoji" width="120" height="120">
+        <h1 style="text-align: center;" class="display-3">Aggressive Tweet Analyzer</h1>
+    </header>
+
+    <form action="{{ url_for('result')}}" method="POST" style="text-align: center;">
+        <div class = "pt-4"></div>
+        <p style="text-align: center;" class="lead">Enter a user handle to analyze their last 100 tweets. </p>
+        <textarea name="user_handle" rows="1" cols="20" placeholder="Username" ></textarea>
+        <div class = "pt-3"></div>
+        <input type="submit" class="btn btn-primary mb-2" value="Analyze" style="text-align: center;" onclick="myFunction()"></input>
+    </form>
+
+    <div class = "pt-3"></div>
+
+    <img id="loading_image" class="rounded mx-auto d-block">
+
+</body>
+</html>
