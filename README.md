@@ -40,7 +40,7 @@ The most immediate goal of this project is to detect aggressive comments. I have
 All the data used for this project can be found [here](https://drive.google.com/drive/u/1/folders/1v_0Qsvn43zcv3dMFjdeg-st1C0-qMAgK). See the [Project structure](#id8) to understand how the folders are organized. 
 
 ### Training datasets<a name="id31"></a>
-The training datasets contain comments that are classified as different types of bullying (aggression, racism, sexism, etc) and that are sourced from different social media platforms. My intention was to use all the datasets to train a binary classifier that would sort comments as "bullying" or "not bullying". However, as I trained the model with more datasets its score decreased, so I decided to train it with the aggression data only. A multi-class classifier would be more appropriate to train with several datasets. 
+The training datasets contain comments that are classified as different types of bullying (aggression, racism, sexism, etc) and that are sourced from different social media platforms. 
 
 ### Evaluation dataset<a name="id32"></a>
 The long-term application of this model will be to detect cyber-bullying cases on social media. The two most popular platforms among teenagers are Instagram and TikTok, so I decided to evaluate the model with original Instagram data that I scraped myself. Using the Instaloader library, I obtained the comments of Kevin Spacey's last 3 Instagram posts. I chose this user because he receives many comments from haters as well as supporters. The evaluation dataset consists of 22k+ comments, 17k+ after deleting the ones that contained only emojis or words shorter that two characters. 
@@ -48,7 +48,7 @@ The long-term application of this model will be to detect cyber-bullying cases o
 ## BERT fine-tuning<a name="id4"></a>
 The model I used as a basis for this project is BERT, a transformer. Transformers use an attention mechanism that learns contextual relations between words (or sub-words) in a text. BERT is pre-trained on a large corpus of English text data.
 
-To fine-tune the model I used the prebuilt <CODE>TFBertForSequenceClassification</CODE> class and trained it.
+To fine-tune the model I used the prebuilt <CODE>TFBertForSequenceClassification</CODE> class and trained it. My intention was to use all the datasets to train a binary classifier that would sort comments as "bullying" or "not bullying". However, as I trained the model with more datasets its score decreased, so I decided to train it with the aggression data only. A multi-class classifier would be more appropriate to train with several datasets. 
 
 The weights of the fine-tuned models I tested in the notebooks can be found [here](https://drive.google.com/drive/u/1/folders/1fdrckXTMFYfj9R33LwH2Xi3CsVxReW6e).
 
