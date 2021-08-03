@@ -61,7 +61,7 @@ When predicting the labels of the test split of the aggression dataset, the mode
 
 ### Evaluation data<a name="id52"></a>
 Since the evaluation data was obtained directly from Instagram, it was not pre-labeled. 
-* Out of 17.749 comments, 83% were predicted as class 0 ("aggressive") and 17% as class 1 ("not aggressive"). 
+* Out of 17.749 comments, 83% were predicted as class 0 ("not aggressive") and 17% as class 1 ("aggressive"). 
 * For the comments predicted as class 1, I manually checked if the label was correct and found that in 86% of the cases it was correct. In most of the cases where it was incorrect, the comment contained swear words used in a friendly way. 
 
 ## Web app<a name="id6"></a>
