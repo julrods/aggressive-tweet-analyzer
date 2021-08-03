@@ -17,7 +17,7 @@ Júlia Rodríguez Sánchez | *August 2020*
 4. [BERT fine-tuning](#id4)
 5. [Evaluation](#id5)<br>
 5.1. [Test split](#id51)<br>
-5.1. [Evaluation data](#id52)
+5.2. [Evaluation data](#id52)
 6. [Web app](#id6)
 7. [Next steps](#id7)
 8. [Project structure](#id8)
