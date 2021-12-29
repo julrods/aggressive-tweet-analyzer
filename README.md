@@ -1,7 +1,7 @@
 # Aggressive Tweet Analyzer: an NLP app
 ### Ironhack Data Analytics Bootcamp - Final Project
 
-Júlia Rodríguez Sánchez | *August 2020*
+Júlia Rodríguez Sánchez | *August 2021*
 
 
 
